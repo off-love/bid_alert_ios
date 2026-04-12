@@ -1,0 +1,50 @@
+name: 입찰알리미 공고 체크
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # 10분마다 실행
+  workflow_dispatch:          # 수동 실행
+
+permissions:
+  contents: write             # state.json 커밋 권한
+
+concurrency:
+  group: notice-check
+  cancel-in-progress: false   # 진행 중인 작업은 완료 대기
+
+env:
+  G2B_API_KEY: ${{ secrets.G2B_API_KEY }}
+  G2B_PREBID_API_KEY: ${{ secrets.G2B_PREBID_API_KEY }}
+  FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
+  TZ: Asia/Seoul
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run notice checker
+        run: python -m src.main
+
+      - name: Commit state changes
+        working-directory: .
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add server/data/
+          git diff --cached --quiet || git commit -m "chore: update state [skip ci]"
+          git pull --rebase origin main || git rebase --abort
+          git push || echo "Push failed, will retry next run"
