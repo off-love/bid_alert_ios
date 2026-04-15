@@ -1,5 +1,5 @@
 {
-  "last_check": "2026-04-16T07:05:56.826936+09:00",
+  "last_check": "2026-04-16T08:00:19.317832+09:00",
   "notified_bids": {
     "R26BK01448997-001": {
       "notified_at": "2026-04-13T12:50:46.550603+09:00",
@@ -3905,6 +3905,21 @@
       "notified_at": "2026-04-15T23:18:17.187881+09:00",
       "keyword": "용역",
       "notice_type": "bid"
+    },
+    "R26BK01468709-000": {
+      "notified_at": "2026-04-16T07:58:14.299310+09:00",
+      "keyword": "설계",
+      "notice_type": "bid"
+    },
+    "R26BK01468712-000": {
+      "notified_at": "2026-04-16T07:58:14.565281+09:00",
+      "keyword": "설계",
+      "notice_type": "bid"
+    },
+    "R26BK01468135-000": {
+      "notified_at": "2026-04-16T07:59:10.843140+09:00",
+      "keyword": "조경",
+      "notice_type": "bid"
     }
   },
   "notified_prebids": {
@@ -5156,6 +5171,11 @@
     "R26BD00214522": {
       "notified_at": "2026-04-16T04:11:55.146702+09:00",
       "keyword": "용역",
+      "notice_type": "prebid"
+    },
+    "R26BD00214523": {
+      "notified_at": "2026-04-16T07:58:39.769522+09:00",
+      "keyword": "컨설팅",
       "notice_type": "prebid"
     }
   }
