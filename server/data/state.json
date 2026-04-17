@@ -1,5 +1,5 @@
 {
-  "last_check": "2026-04-17T20:32:32.509398+09:00",
+  "last_check": "2026-04-17T21:12:58.201617+09:00",
   "notified_bids": {
     "R26BK01448997-001": {
       "notified_at": "2026-04-13T12:50:46.550603+09:00",
@@ -6505,6 +6505,11 @@
       "notified_at": "2026-04-17T20:32:22.691922+09:00",
       "keyword": "차량",
       "notice_type": "bid"
+    },
+    "R26BK01474159-000": {
+      "notified_at": "2026-04-17T21:12:40.867641+09:00",
+      "keyword": "전기",
+      "notice_type": "bid"
     }
   },
   "notified_prebids": {
@@ -8666,6 +8671,16 @@
     "R26BD00215899": {
       "notified_at": "2026-04-17T19:22:56.983424+09:00",
       "keyword": "용역",
+      "notice_type": "prebid"
+    },
+    "R26BD00215918": {
+      "notified_at": "2026-04-17T21:11:47.524171+09:00",
+      "keyword": "용역",
+      "notice_type": "prebid"
+    },
+    "R26BD00215919": {
+      "notified_at": "2026-04-17T21:12:21.525396+09:00",
+      "keyword": "조사",
       "notice_type": "prebid"
     }
   }
