@@ -13,8 +13,6 @@ import time
 from typing import Any
 
 import requests
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
 
 from src.core.models import BidNotice, BidType
 from src.utils.time_utils import get_query_range
@@ -22,21 +20,6 @@ from src.utils.time_utils import get_query_range
 logger = logging.getLogger(__name__)
 
 BASE_URL = "https://apis.data.go.kr/1230000/ad/BidPublicInfoService"
-API_TIMEOUT = 60  # 해외 서버 대비 타임아웃 여유
-
-
-def _get_session() -> requests.Session:
-    """재시도 로직이 포함된 requests 세션"""
-    session = requests.Session()
-    retry = Retry(
-        total=3,
-        backoff_factor=2,  # 2초, 4초, 8초 간격으로 재시도
-        status_forcelist=[429, 500, 502, 503, 504],
-    )
-    adapter = HTTPAdapter(max_retries=retry)
-    session.mount("https://", adapter)
-    session.mount("http://", adapter)
-    return session
 
 
 def _get_api_key() -> str:
@@ -147,6 +130,7 @@ def fetch_bid_notices(
         BidNotice 리스트
     """
     bgn_dt, end_dt = get_query_range(buffer_minutes)
+    api_key = _get_api_key()
     all_notices: list[BidNotice] = []
     page_no = 1
 
@@ -156,7 +140,7 @@ def fetch_bid_notices(
             url = f"{BASE_URL}/{operation}"
 
             params: dict[str, Any] = {
-                "ServiceKey": _get_api_key(),
+                "ServiceKey": api_key,
                 "type": "json",
                 "pageNo": str(page_no),
                 "numOfRows": str(min(max_results, 999)),
@@ -173,8 +157,7 @@ def fetch_bid_notices(
                 operation, keyword or "전체", bgn_dt, end_dt, page_no,
             )
 
-            session = _get_session()
-            response = session.get(url, params=params, timeout=API_TIMEOUT)
+            response = requests.get(url, params=params, timeout=30)
             response.raise_for_status()
 
             data = response.json()

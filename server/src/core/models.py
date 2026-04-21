@@ -42,6 +42,21 @@ class BidType(str, Enum):
         }
         return mapping[self]
 
+    @property
+    def topic_category(self) -> str:
+        """FCM 토픽 업무구분 코드 (1자)
+
+        토픽 이름에 사용되는 약어:
+          service → "s", construction → "c", goods → "g", foreign → "f"
+        """
+        mapping = {
+            BidType.SERVICE: "s",
+            BidType.GOODS: "g",
+            BidType.CONSTRUCTION: "c",
+            BidType.FOREIGN: "f",
+        }
+        return mapping[self]
+
 
 class NoticeType(str, Enum):
     """공고 종류"""
@@ -119,10 +134,9 @@ class PreBidNotice:
 class KeywordConfig:
     """키워드 설정 (keywords.json에서 로드)"""
     original: str                                  # 원본 키워드
-    bid_topic: str                                 # FCM 입찰공고 토픽 해시
-    pre_topic: str                                 # FCM 사전규격 토픽 해시
+    keyword_hash: str                              # SHA256 해시 (16자 hex)
     exclude: list[str] = field(default_factory=list)  # 제외 키워드
-    bid_types: list[str] = field(default_factory=lambda: ["service", "goods", "construction", "foreign"])
+    bid_types: list[str] = field(default_factory=lambda: ["service", "goods", "construction"])
 
     @property
     def bid_type_enums(self) -> list[BidType]:
@@ -133,6 +147,18 @@ class KeywordConfig:
             "foreign": BidType.FOREIGN,
         }
         return [mapping[bt] for bt in self.bid_types if bt in mapping]
+
+    def get_topic(self, noti_type: str, bid_type: BidType) -> str:
+        """특정 공고유형 + 업무구분에 대한 FCM 토픽 이름 반환
+
+        Args:
+            noti_type: "bid" (입찰공고) 또는 "pre" (사전규격)
+            bid_type: BidType enum
+
+        Returns:
+            FCM 토픽 이름 (예: "bid_s_b29dbba57df61de7")
+        """
+        return f"{noti_type}_{bid_type.topic_category}_{self.keyword_hash}"
 
 
 @dataclass

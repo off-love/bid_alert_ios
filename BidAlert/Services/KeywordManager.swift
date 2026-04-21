@@ -78,6 +78,26 @@ final class KeywordManager {
         }
     }
 
+    /// 현재 저장된 활성 키워드들의 토픽 구독을 복구합니다.
+    @MainActor
+    static func restoreSubscriptions(context: ModelContext) {
+        let descriptor = FetchDescriptor<Keyword>()
+        guard let keywords = try? context.fetch(descriptor) else {
+            print("❌ 키워드 조회 실패: 토픽 구독 복구 건너뜀")
+            return
+        }
+
+        let activeKeywords = keywords.filter(\.isActive)
+        if activeKeywords.isEmpty {
+            print("ℹ️ 복구할 활성 키워드가 없습니다")
+            return
+        }
+
+        for keyword in activeKeywords {
+            subscribeTopics(for: keyword)
+        }
+    }
+
     // MARK: - FCM 토픽 구독
 
     private static func subscribeTopics(for keyword: Keyword) {

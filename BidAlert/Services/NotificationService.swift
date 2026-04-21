@@ -26,7 +26,12 @@ final class NotificationService {
         do {
             let granted = try await UNUserNotificationCenter.current()
                 .requestAuthorization(options: [.alert, .badge, .sound])
-            await MainActor.run { self.isAuthorized = granted }
+            await MainActor.run {
+                self.isAuthorized = granted
+                if granted {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
             return granted
         } catch {
             print("❌ 알림 권한 요청 실패: \(error)")

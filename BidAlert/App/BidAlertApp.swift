@@ -46,6 +46,10 @@ class AppDelegate: NSObject, UIApplicationDelegate, MessagingDelegate, UNUserNot
         // 원격 알림 등록
         application.registerForRemoteNotifications()
 
+        Task { @MainActor in
+            KeywordManager.restoreSubscriptions(context: BidAlertApp.sharedModelContainer.mainContext)
+        }
+
         return true
     }
 
@@ -54,9 +58,17 @@ class AppDelegate: NSObject, UIApplicationDelegate, MessagingDelegate, UNUserNot
         Messaging.messaging().apnsToken = deviceToken
     }
 
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("❌ APNs 등록 실패: \(error.localizedDescription)")
+    }
+
     // FCM 토큰 갱신
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print("📱 FCM Token: \(fcmToken ?? "nil")")
+
+        Task { @MainActor in
+            KeywordManager.restoreSubscriptions(context: BidAlertApp.sharedModelContainer.mainContext)
+        }
     }
 
     // 포그라운드 알림 표시 + SwiftData 저장

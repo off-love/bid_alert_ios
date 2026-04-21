@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "updated_at": "2026-04-11T18:00:00+09:00",
+  "version": 2,
+  "updated_at": "2026-04-16T21:40:00+09:00",
   "global_exclude": [
     "취소공고",
     "정정공고",
@@ -9,471 +9,303 @@
   "keywords": [
     {
       "original": "소프트웨어",
-      "bid_topic": "bid_465f222a27475e7f",
-      "pre_topic": "pre_465f222a27475e7f",
+      "keyword_hash": "465f222a27475e7f",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "정보시스템",
-      "bid_topic": "bid_1f592922614ca38c",
-      "pre_topic": "pre_1f592922614ca38c",
+      "keyword_hash": "1f592922614ca38c",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "클라우드",
-      "bid_topic": "bid_f5deb01f4f509d3a",
-      "pre_topic": "pre_f5deb01f4f509d3a",
+      "keyword_hash": "f5deb01f4f509d3a",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "CCTV",
-      "bid_topic": "bid_b29dbba57df61de7",
-      "pre_topic": "pre_b29dbba57df61de7",
+      "keyword_hash": "b29dbba57df61de7",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "goods"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "보안",
-      "bid_topic": "bid_792fe6d190cf180b",
-      "pre_topic": "pre_792fe6d190cf180b",
+      "keyword_hash": "792fe6d190cf180b",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "goods"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "홈페이지",
-      "bid_topic": "bid_1f8495c6dbc9bb93",
-      "pre_topic": "pre_1f8495c6dbc9bb93",
+      "keyword_hash": "1f8495c6dbc9bb93",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "AI",
-      "bid_topic": "bid_32e83e92d45d71f6",
-      "pre_topic": "pre_32e83e92d45d71f6",
+      "keyword_hash": "32e83e92d45d71f6",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "빅데이터",
-      "bid_topic": "bid_dd13253dae4cad19",
-      "pre_topic": "pre_dd13253dae4cad19",
+      "keyword_hash": "dd13253dae4cad19",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "시설물",
-      "bid_topic": "bid_56190b5df1537d36",
-      "pre_topic": "pre_56190b5df1537d36",
+      "keyword_hash": "56190b5df1537d36",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "construction"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "도로",
-      "bid_topic": "bid_60982a61e50d3bea",
-      "pre_topic": "pre_60982a61e50d3bea",
+      "keyword_hash": "60982a61e50d3bea",
       "exclude": [],
-      "bid_types": [
-        "construction"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "건축",
-      "bid_topic": "bid_8e9cd60504b1a092",
-      "pre_topic": "pre_8e9cd60504b1a092",
+      "keyword_hash": "8e9cd60504b1a092",
       "exclude": [],
-      "bid_types": [
-        "construction"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "설계",
-      "bid_topic": "bid_4a827e33535875aa",
-      "pre_topic": "pre_4a827e33535875aa",
+      "keyword_hash": "4a827e33535875aa",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "construction"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "감리",
-      "bid_topic": "bid_ce2e154c6fcc6b11",
-      "pre_topic": "pre_ce2e154c6fcc6b11",
+      "keyword_hash": "ce2e154c6fcc6b11",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "construction"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "영상",
-      "bid_topic": "bid_be562142ef48d573",
-      "pre_topic": "pre_be562142ef48d573",
+      "keyword_hash": "be562142ef48d573",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "goods"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "출입통제",
-      "bid_topic": "bid_2f21bad6b3ea8720",
-      "pre_topic": "pre_2f21bad6b3ea8720",
+      "keyword_hash": "2f21bad6b3ea8720",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "goods"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "측량",
-      "bid_topic": "bid_5f66b02e337d9504",
-      "pre_topic": "pre_5f66b02e337d9504",
+      "keyword_hash": "5f66b02e337d9504",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "지적측량",
-      "bid_topic": "bid_a1be37278faef685",
-      "pre_topic": "pre_a1be37278faef685",
+      "keyword_hash": "a1be37278faef685",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "용역",
-      "bid_topic": "bid_2ee07ef88e18cae0",
-      "pre_topic": "pre_2ee07ef88e18cae0",
+      "keyword_hash": "2ee07ef88e18cae0",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "컨설팅",
-      "bid_topic": "bid_2dc1a67f5ea0fdcf",
-      "pre_topic": "pre_2dc1a67f5ea0fdcf",
+      "keyword_hash": "2dc1a67f5ea0fdcf",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "교육",
-      "bid_topic": "bid_4da9a75910ede3ad",
-      "pre_topic": "pre_4da9a75910ede3ad",
+      "keyword_hash": "4da9a75910ede3ad",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "홍보",
-      "bid_topic": "bid_e1594a102757fad5",
-      "pre_topic": "pre_e1594a102757fad5",
+      "keyword_hash": "e1594a102757fad5",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "청소",
-      "bid_topic": "bid_8049e4b9139d36bf",
-      "pre_topic": "pre_8049e4b9139d36bf",
+      "keyword_hash": "8049e4b9139d36bf",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "경비",
-      "bid_topic": "bid_a21f4c8a32ad71d8",
-      "pre_topic": "pre_a21f4c8a32ad71d8",
+      "keyword_hash": "a21f4c8a32ad71d8",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "네트워크",
-      "bid_topic": "bid_d09e977b090b1003",
-      "pre_topic": "pre_d09e977b090b1003",
+      "keyword_hash": "d09e977b090b1003",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "goods"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "서버",
-      "bid_topic": "bid_7d585c3842de4e43",
-      "pre_topic": "pre_7d585c3842de4e43",
+      "keyword_hash": "7d585c3842de4e43",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "goods"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "데이터베이스",
-      "bid_topic": "bid_cb53ca6fdafa5bb9",
-      "pre_topic": "pre_cb53ca6fdafa5bb9",
+      "keyword_hash": "cb53ca6fdafa5bb9",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "전산",
-      "bid_topic": "bid_719e04ae587b7136",
-      "pre_topic": "pre_719e04ae587b7136",
+      "keyword_hash": "719e04ae587b7136",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "goods"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "유지보수",
-      "bid_topic": "bid_f1d9444fc1f85128",
-      "pre_topic": "pre_f1d9444fc1f85128",
+      "keyword_hash": "f1d9444fc1f85128",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "운영관리",
-      "bid_topic": "bid_8bea5a13c43c7e23",
-      "pre_topic": "pre_8bea5a13c43c7e23",
+      "keyword_hash": "8bea5a13c43c7e23",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "조경",
-      "bid_topic": "bid_4a2e2d96412c14bb",
-      "pre_topic": "pre_4a2e2d96412c14bb",
+      "keyword_hash": "4a2e2d96412c14bb",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "construction"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "인쇄",
-      "bid_topic": "bid_3ee1ff52e0e8a051",
-      "pre_topic": "pre_3ee1ff52e0e8a051",
+      "keyword_hash": "3ee1ff52e0e8a051",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "goods"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "광고",
-      "bid_topic": "bid_3ac16375aaf1de63",
-      "pre_topic": "pre_3ac16375aaf1de63",
+      "keyword_hash": "3ac16375aaf1de63",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "조사",
-      "bid_topic": "bid_e9e7abfc765737f0",
-      "pre_topic": "pre_e9e7abfc765737f0",
+      "keyword_hash": "e9e7abfc765737f0",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "연구",
-      "bid_topic": "bid_a0eadd0b05bc2eca",
-      "pre_topic": "pre_a0eadd0b05bc2eca",
+      "keyword_hash": "a0eadd0b05bc2eca",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "분석",
-      "bid_topic": "bid_45ec3425c8b02734",
-      "pre_topic": "pre_45ec3425c8b02734",
+      "keyword_hash": "45ec3425c8b02734",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "개발",
-      "bid_topic": "bid_a5ac2b7251f6a58b",
-      "pre_topic": "pre_a5ac2b7251f6a58b",
+      "keyword_hash": "a5ac2b7251f6a58b",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "이전",
-      "bid_topic": "bid_da7e61c67cc5a90f",
-      "pre_topic": "pre_da7e61c67cc5a90f",
+      "keyword_hash": "da7e61c67cc5a90f",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "construction"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "철거",
-      "bid_topic": "bid_8a70e8900c84a96a",
-      "pre_topic": "pre_8a70e8900c84a96a",
+      "keyword_hash": "8a70e8900c84a96a",
       "exclude": [],
-      "bid_types": [
-        "construction"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "방수",
-      "bid_topic": "bid_4fc2f5cddb8f437c",
-      "pre_topic": "pre_4fc2f5cddb8f437c",
+      "keyword_hash": "4fc2f5cddb8f437c",
       "exclude": [],
-      "bid_types": [
-        "construction"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "도장",
-      "bid_topic": "bid_b0fe42fc1bd78d19",
-      "pre_topic": "pre_b0fe42fc1bd78d19",
+      "keyword_hash": "b0fe42fc1bd78d19",
       "exclude": [],
-      "bid_types": [
-        "construction"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "전기",
-      "bid_topic": "bid_8cd58eab1de8b2f5",
-      "pre_topic": "pre_8cd58eab1de8b2f5",
+      "keyword_hash": "8cd58eab1de8b2f5",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "construction"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "소방",
-      "bid_topic": "bid_23500ebf6fdd8df1",
-      "pre_topic": "pre_23500ebf6fdd8df1",
+      "keyword_hash": "23500ebf6fdd8df1",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "construction"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "통신",
-      "bid_topic": "bid_44b99c9a1fc2e9b2",
-      "pre_topic": "pre_44b99c9a1fc2e9b2",
+      "keyword_hash": "44b99c9a1fc2e9b2",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "goods"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "의료",
-      "bid_topic": "bid_182d2f97e9825c56",
-      "pre_topic": "pre_182d2f97e9825c56",
+      "keyword_hash": "182d2f97e9825c56",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "goods"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "식품",
-      "bid_topic": "bid_17f9355809dcbd73",
-      "pre_topic": "pre_17f9355809dcbd73",
+      "keyword_hash": "17f9355809dcbd73",
       "exclude": [],
-      "bid_types": [
-        "goods"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "가구",
-      "bid_topic": "bid_7cd1a55d13c114f1",
-      "pre_topic": "pre_7cd1a55d13c114f1",
+      "keyword_hash": "7cd1a55d13c114f1",
       "exclude": [],
-      "bid_types": [
-        "goods"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "차량",
-      "bid_topic": "bid_02cb09e20c94f203",
-      "pre_topic": "pre_02cb09e20c94f203",
+      "keyword_hash": "02cb09e20c94f203",
       "exclude": [],
-      "bid_types": [
-        "goods"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "사무용품",
-      "bid_topic": "bid_6f8d3de707f30555",
-      "pre_topic": "pre_6f8d3de707f30555",
+      "keyword_hash": "6f8d3de707f30555",
       "exclude": [],
-      "bid_types": [
-        "goods"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "환경",
-      "bid_topic": "bid_5d36e09c3271e0e7",
-      "pre_topic": "pre_5d36e09c3271e0e7",
+      "keyword_hash": "5d36e09c3271e0e7",
       "exclude": [],
-      "bid_types": [
-        "service",
-        "construction"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     },
     {
       "original": "분할측량",
-      "bid_topic": "bid_5c42c67b8148f202",
-      "pre_topic": "pre_5c42c67b8148f202",
+      "keyword_hash": "5c42c67b8148f202",
       "exclude": [],
-      "bid_types": [
-        "service"
-      ]
+      "bid_types": ["service", "construction", "goods"]
     }
   ]
 }

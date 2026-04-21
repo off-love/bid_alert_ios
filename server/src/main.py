@@ -1,5 +1,5 @@
 """
-입찰알리미 메인 실행 스크립트
+입찰톡 메인 실행 스크립트
 
 GitHub Actions에서 10분 간격으로 실행됩니다.
 
@@ -8,7 +8,7 @@ GitHub Actions에서 10분 간격으로 실행됩니다.
 2. keywords.json 로드
 3. 키워드별 × 업종별 API 호출
 4. 2단계 필터링 (제외 키워드 + 중복 체크)
-5. 신규 공고 → FCM Topic 발송
+5. 신규 공고 → FCM Topic 발송 (업무구분별 토픽)
 6. state.json 업데이트
 """
 
@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import sys
 from pathlib import Path
 
@@ -24,7 +25,7 @@ from src.api.prebid_client import fetch_prebid_notices
 from src.core.filter import filter_bid_notices, filter_prebid_notices
 from src.core.formatter import format_bid_payload, format_prebid_payload
 from src.core.models import BidType, KeywordConfig
-from src.core.topic_hasher import topic_name
+from src.core.topic_hasher import keyword_hash
 from src.fcm.sender import send_bid_notification
 from src.storage.state_manager import (
     cleanup_old_records,
@@ -46,7 +47,26 @@ logger = logging.getLogger(__name__)
 
 # ─── 상수 ──────────────────────────────────────────────────────
 KEYWORDS_PATH = Path(__file__).parent.parent / "data" / "keywords.json"
+FIREBASE_CREDENTIALS_PATH = Path(__file__).parent.parent / "firebase-credentials.json"
 QUERY_BUFFER_MINUTES = 30  # 10분 cron 간격 + 20분 여유
+
+
+def validate_runtime_config() -> None:
+    """운영 실행에 필요한 필수 설정을 검증합니다."""
+    missing: list[str] = []
+
+    if not os.environ.get("G2B_API_KEY", "").strip():
+        missing.append("G2B_API_KEY")
+
+    has_firebase_env = bool(os.environ.get("FIREBASE_CREDENTIALS", "").strip())
+    has_firebase_file = FIREBASE_CREDENTIALS_PATH.exists()
+    if not has_firebase_env and not has_firebase_file:
+        missing.append("FIREBASE_CREDENTIALS or server/firebase-credentials.json")
+
+    if missing:
+        raise RuntimeError(
+            "필수 런타임 설정이 누락되었습니다: " + ", ".join(missing)
+        )
 
 
 def load_keywords() -> list[KeywordConfig]:
@@ -60,12 +80,16 @@ def load_keywords() -> list[KeywordConfig]:
 
     keywords = []
     for kw_data in data.get("keywords", []):
+        # keyword_hash가 없으면 동적으로 생성
+        kw_hash = kw_data.get("keyword_hash", "")
+        if not kw_hash:
+            kw_hash = keyword_hash(kw_data["original"])
+
         kw = KeywordConfig(
             original=kw_data["original"],
-            bid_topic=kw_data["bid_topic"],
-            pre_topic=kw_data["pre_topic"],
+            keyword_hash=kw_hash,
             exclude=kw_data.get("exclude", []),
-            bid_types=kw_data.get("bid_types", ["service", "goods", "construction", "foreign"]),
+            bid_types=kw_data.get("bid_types", ["service", "goods", "construction"]),
         )
         keywords.append(kw)
 
@@ -79,7 +103,7 @@ def load_keywords() -> list[KeywordConfig]:
 
 
 def process_bid_notices(kw: KeywordConfig, state: dict) -> int:
-    """입찰공고 수집 + 필터링 + FCM 발송
+    """입찰공고 수집 + 필터링 + FCM 발송 (업무구분별 토픽)
 
     Returns:
         발송 성공 건수
@@ -104,7 +128,9 @@ def process_bid_notices(kw: KeywordConfig, state: dict) -> int:
             exclude_keywords=kw.exclude,
         )
 
-        # 3. 중복 체크 + FCM 발송
+        # 3. 업무구분별 FCM 토픽으로 발송
+        topic = kw.get_topic("bid", bid_type)
+
         for notice in filtered:
             if is_notified(state, notice.unique_key, "bid"):
                 continue
@@ -112,27 +138,27 @@ def process_bid_notices(kw: KeywordConfig, state: dict) -> int:
             # FCM 페이로드 생성
             payload = format_bid_payload(notice, kw.original)
 
-            # FCM Topic 발송
-            success = send_bid_notification(kw.bid_topic, payload)
+            # FCM Topic 발송 (업무구분별 토픽)
+            success = send_bid_notification(topic, payload)
 
             if success:
                 mark_notified(state, notice.unique_key, kw.original, "bid")
                 sent_count += 1
                 logger.info(
-                    "📱 입찰 알림 발송: [%s] %s → %s",
-                    kw.original, notice.bid_ntce_nm, kw.bid_topic,
+                    "📱 입찰 알림 발송: [%s/%s] %s → %s",
+                    kw.original, bid_type.display_name, notice.bid_ntce_nm, topic,
                 )
             else:
                 logger.warning(
-                    "❌ 입찰 알림 실패: [%s] %s",
-                    kw.original, notice.bid_ntce_nm,
+                    "❌ 입찰 알림 실패: [%s/%s] %s",
+                    kw.original, bid_type.display_name, notice.bid_ntce_nm,
                 )
 
     return sent_count
 
 
 def process_prebid_notices(kw: KeywordConfig, state: dict) -> int:
-    """사전규격 수집 + 필터링 + FCM 발송
+    """사전규격 수집 + 필터링 + FCM 발송 (업무구분별 토픽)
 
     Returns:
         발송 성공 건수
@@ -157,25 +183,27 @@ def process_prebid_notices(kw: KeywordConfig, state: dict) -> int:
             exclude_keywords=kw.exclude,
         )
 
-        # 3. 중복 체크 + FCM 발송
+        # 3. 업무구분별 FCM 토픽으로 발송
+        topic = kw.get_topic("pre", bid_type)
+
         for notice in filtered:
             if is_notified(state, notice.unique_key, "prebid"):
                 continue
 
             payload = format_prebid_payload(notice, kw.original)
-            success = send_bid_notification(kw.pre_topic, payload)
+            success = send_bid_notification(topic, payload)
 
             if success:
                 mark_notified(state, notice.unique_key, kw.original, "prebid")
                 sent_count += 1
                 logger.info(
-                    "📱 사전규격 알림 발송: [%s] %s → %s",
-                    kw.original, notice.prcure_nm, kw.pre_topic,
+                    "📱 사전규격 알림 발송: [%s/%s] %s → %s",
+                    kw.original, bid_type.display_name, notice.prcure_nm, topic,
                 )
             else:
                 logger.warning(
-                    "❌ 사전규격 알림 실패: [%s] %s",
-                    kw.original, notice.prcure_nm,
+                    "❌ 사전규격 알림 실패: [%s/%s] %s",
+                    kw.original, bid_type.display_name, notice.prcure_nm,
                 )
 
     return sent_count
@@ -184,8 +212,10 @@ def process_prebid_notices(kw: KeywordConfig, state: dict) -> int:
 def main() -> None:
     """메인 실행 함수"""
     logger.info("=" * 60)
-    logger.info("🚀 입찰알리미 공고 체크 시작")
+    logger.info("🚀 입찰톡 공고 체크 시작")
     logger.info("=" * 60)
+
+    validate_runtime_config()
 
     # 1. 상태 로드 + 정리
     state = load_state()
@@ -205,8 +235,9 @@ def main() -> None:
 
     for i, kw in enumerate(keywords, 1):
         logger.info(
-            "━━━ [%d/%d] 키워드: %s ━━━",
+            "━━━ [%d/%d] 키워드: %s (업종: %s) ━━━",
             i, len(keywords), kw.original,
+            ", ".join(bt.display_name for bt in kw.bid_type_enums),
         )
 
         # 입찰공고 처리

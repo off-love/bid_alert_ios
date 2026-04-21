@@ -69,7 +69,7 @@ def send_topic_message(
     """FCM Topic 메시지 발송
 
     Args:
-        topic: FCM Topic 이름 (예: "bid_682608e4a04d8e01")
+        topic: FCM Topic 이름 (예: "bid_s_682608e4a04d8e01")
         notification_title: 알림 제목
         notification_body: 알림 본문
         data: 추가 데이터 페이로드 (모든 값은 문자열이어야 함)
@@ -87,8 +87,8 @@ def send_topic_message(
             payload=messaging.APNSPayload(
                 aps=messaging.Aps(
                     sound="default",
-                    badge=1,
                     mutable_content=True,
+                    content_available=True,
                 ),
             ),
         )
