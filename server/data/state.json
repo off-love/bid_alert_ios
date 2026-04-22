@@ -1,5 +1,5 @@
 {
-  "last_check": "2026-04-23T07:38:40.012887+09:00",
+  "last_check": "2026-04-23T08:38:22.904863+09:00",
   "notified_bids": {
     "R26BK01448997-001": {
       "notified_at": "2026-04-13T12:50:46.550603+09:00",
@@ -11280,6 +11280,46 @@
       "notified_at": "2026-04-23T07:36:01.315529+09:00",
       "keyword": "용역",
       "notice_type": "bid"
+    },
+    "R26BK01482048-000": {
+      "notified_at": "2026-04-23T08:30:55.525748+09:00",
+      "keyword": "CCTV",
+      "notice_type": "bid"
+    },
+    "R26BK01483889-000": {
+      "notified_at": "2026-04-23T08:31:53.991786+09:00",
+      "keyword": "도로",
+      "notice_type": "bid"
+    },
+    "R26BK01483893-000": {
+      "notified_at": "2026-04-23T08:32:55.569537+09:00",
+      "keyword": "용역",
+      "notice_type": "bid"
+    },
+    "R26BK01472057-000": {
+      "notified_at": "2026-04-23T08:32:55.759850+09:00",
+      "keyword": "용역",
+      "notice_type": "bid"
+    },
+    "R26BK01476473-001": {
+      "notified_at": "2026-04-23T08:33:42.401742+09:00",
+      "keyword": "경비",
+      "notice_type": "bid"
+    },
+    "R26BK01483900-000": {
+      "notified_at": "2026-04-23T08:36:01.104172+09:00",
+      "keyword": "개발",
+      "notice_type": "bid"
+    },
+    "R26BK01481002-000": {
+      "notified_at": "2026-04-23T08:37:20.911420+09:00",
+      "keyword": "의료",
+      "notice_type": "bid"
+    },
+    "R26BK01481382-000": {
+      "notified_at": "2026-04-23T08:37:21.097297+09:00",
+      "keyword": "의료",
+      "notice_type": "bid"
     }
   },
   "notified_prebids": {
@@ -13826,6 +13866,16 @@
     "R26BD00217442": {
       "notified_at": "2026-04-22T09:06:54.918662+09:00",
       "keyword": "광고",
+      "notice_type": "prebid"
+    },
+    "R26BD00218170": {
+      "notified_at": "2026-04-23T08:32:59.773043+09:00",
+      "keyword": "용역",
+      "notice_type": "prebid"
+    },
+    "R26BD00218167": {
+      "notified_at": "2026-04-23T08:34:34.991157+09:00",
+      "keyword": "유지보수",
       "notice_type": "prebid"
     }
   }
